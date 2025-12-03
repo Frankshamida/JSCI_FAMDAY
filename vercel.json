@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/",
@@ -6,10 +8,6 @@
     },
     {
       "source": "/registration",
-      "destination": "/Registration.html"
-    },
-    {
-      "source": "/register",
       "destination": "/Registration.html"
     }
   ],
@@ -28,11 +26,15 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     },
     {
-      "source": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico)",
+      "source": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico|css|js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -41,15 +43,13 @@
       ]
     },
     {
-      "source": "/(.*)\\.(html|css|js)",
+      "source": "/Registration.html",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
         }
       ]
     }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  ]
 }
